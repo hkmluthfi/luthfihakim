@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Luthfi</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --deep-coffee: #1E1B18;
+            --dark-walnut: #2C2621;
+            --old-library-brown: #3A322C;
+            --antique-gold: #C6A969;
+            --vintage-beige: #E6D5B8;
+            --warm-ivory: #FAF3E6;
+            --burgundy: #7A2E2E;
+            --warm-white: #F5F5F5;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--warm-white);
+            background: var(--deep-coffee);
+            min-height: 100vh;
+        }
+
+        /* --- Navigasi --- */
+        .navbar { padding: 2.5rem 5%; display: flex; justify-content: flex-end; z-index: 10; }
+        .nav-links a {
+            color: var(--warm-white); text-decoration: none; margin-left: 2.5rem;
+            font-size: 0.95rem; font-weight: 600; transition: color 0.3s ease; position: relative;
+        }
+        .nav-links a:hover { color: var(--antique-gold); }
+        .nav-links a::after {
+            content: ''; position: absolute; width: 0; height: 2px;
+            bottom: -6px; left: 0; background-color: var(--burgundy); transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after { width: 100%; }
+        
+        /* Highlight menu aktif */
+        .nav-links a.active { color: var(--antique-gold); }
+
+        /* --- ABOUT ME SECTION --- */
+        .section-container { padding: 2rem 8% 5rem 8%; animation: fadeIn 1s ease forwards; }
+
+        .section-header { display: flex; align-items: center; margin-bottom: 3rem; }
+        .section-header h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--warm-white); margin-right: 1.5rem; font-weight: 400; }
+        .line { height: 1px; flex-grow: 0; width: 150px; background-color: var(--vintage-beige); }
+
+        .about-content { display: flex; gap: 2rem; margin-bottom: 5rem; }
+        .about-card { background-color: var(--warm-ivory); border-radius: 20px; padding: 1.5rem; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); }
+        .image-card { flex: 0.4; display: flex; align-items: center; justify-content: center; }
+        .image-card img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; min-height: 300px; }
+        .text-card { flex: 0.6; padding: 3rem; display: flex; flex-direction: column; justify-content: center; }
+        .text-card p { color: var(--deep-coffee); font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.2rem; font-weight: 500; }
+
+        .interest-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 5rem; }
+        .interest-pill {
+            background-color: var(--old-library-brown); color: var(--vintage-beige); padding: 1.2rem;
+            border-radius: 12px; text-align: center; font-weight: 600; font-size: 1rem;
+            transition: all 0.3s ease; cursor: default; border: 1px solid transparent;
+        }
+        .interest-pill:hover { background-color: var(--dark-walnut); color: var(--antique-gold); border: 1px solid var(--antique-gold); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+
+        .quote-container { text-align: center; max-width: 800px; margin: 0 auto; padding: 2rem; }
+        .quote-text { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--warm-white); font-style: italic; margin-bottom: 1rem; line-height: 1.5; }
+        .quote-author { color: var(--antique-gold); font-size: 1.1rem; font-weight: 600; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 900px) {
+            .navbar { justify-content: center; flex-wrap: wrap; gap: 1rem; padding: 1.5rem; }
+            .nav-links a { margin: 0 1rem; }
+            .about-content { flex-direction: column; }
+            .text-card { padding: 2rem; }
+            .interest-grid { grid-template-columns: repeat(2, 1fr); }
+            .quote-text { font-size: 1.4rem; }
+        }
+        @media (max-width: 500px) { .interest-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html" class="active">About Me</a>
+            <a href="#">Skills</a>
+            <a href="#">Projects</a>
+            <a href="#">Experience</a>
+            <a href="#">Certifications</a>
+            <a href="#">Blog</a>
+            <a href="#">Contact</a>
+        </div>
+    </nav>
+
+    <section class="section-container">
+        <div class="section-header">
+            <h2>About Me</h2>
+            <div class="line"></div>
+        </div>
+
+        <div class="about-content">
+            <div class="about-card image-card">
+                <img src="about-pic.jpg" alt="About Luthfi">
+            </div>
+            
+            <div class="about-card text-card">
+                <p>Hello! I am Luthfi Aulia Hakim, an undergraduate student in the International Track of Geodesy and Geomatics Engineering at Institut Teknologi Bandung (ITB).</p>
+                <p>I have a deep passion for Geographic Information Systems (GIS), Photogrammetry, and spatial data analysis. My recent work involves developing high-precision disaster risk maps and building interactive WebGIS applications to visualize complex spatial data.</p>
+                <p>I am highly driven to apply my geospatial expertise to solve real-world challenges, with a keen interest in project management and operations within dynamic sectors such as the oil and gas industry.</p>
+            </div>
+        </div>
+
+        <div class="section-header">
+            <h2>Interest</h2>
+            <div class="line"></div>
+        </div>
+
+        <div class="interest-grid">
+            <div class="interest-pill">WebGIS Development</div>
+            <div class="interest-pill">Photogrammetry</div>
+            <div class="interest-pill">Spatial Analysis</div>
+            <div class="interest-pill">Disaster Risk Mapping</div>
+            <div class="interest-pill">Terrestrial Laser Scan</div>
+            <div class="interest-pill">Hydrography Data</div>
+            <div class="interest-pill">Project Management</div>
+            <div class="interest-pill">Oil & Gas Operations</div>
+            <div class="interest-pill">Cartography</div>
+            <div class="interest-pill">Remote Sensing</div>
+            <div class="interest-pill">Data Visualization</div>
+            <div class="interest-pill">Korean Fashion</div>
+        </div>
+
+        <div class="quote-container">
+            <p class="quote-text">"Everything is related to everything else, but near things are more related than distant things."</p>
+            <p class="quote-author">- Waldo Tobler</p>
+        </div>
+    </section>
+
+</body>
+</html>
