@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luthfi - Portfolio</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Palet Warna Dark Academia (Resmi) --- */
+        :root {
+            --deep-coffee: #1E1B18;         /* Background utama */
+            --dark-walnut: #2C2621;         /* Section alternatif / Background bingkai */
+            --antique-gold: #C6A969;        /* Warna utama / Bingkai */
+            --vintage-beige: #E6D5B8;       /* Teks sekunder */
+            --burgundy: #7A2E2E;            /* Aksen link */
+            --warm-white: #F5F5F5;          /* Teks utama */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--warm-white);
+            overflow-x: hidden;
+            /* Background miring (split) antara Deep Coffee dan Dark Walnut */
+            background: linear-gradient(100deg, var(--deep-coffee) 55%, var(--dark-walnut) 55.1%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- Navigasi --- */
+        .navbar {
+            padding: 2.5rem 5%;
+            display: flex;
+            justify-content: flex-end;
+            z-index: 10;
+        }
+
+        .nav-links a {
+            color: var(--warm-white);
+            text-decoration: none;
+            margin-left: 2.5rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--antique-gold);
+        }
+
+        /* Garis bawah animasi saat di-hover */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -6px;
+            left: 0;
+            background-color: var(--burgundy);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex: 1;
+            padding: 0 8% 5% 8%;
+        }
+
+        .hero-text {
+            max-width: 50%;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.3s;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .highlight {
+            color: var(--antique-gold);
+        }
+
+        .subtitle {
+            font-size: 1.15rem;
+            line-height: 1.6;
+            color: var(--vintage-beige);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .enthusiast {
+            font-size: 1.05rem;
+            color: var(--warm-white);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- CONTAINER GAMBAR PROFIL (UNTUK ANIMASI MASUK) --- */
+        .hero-image {
+            width: 45%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transform: translateX(40px);
+            animation: fadeLeft 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.6s;
+        }
+
+        /* --- BINGKAI BULAT MINIMALIS --- */
+        #profile-frame {
+            width: min(100%, 400px); /* Responsif, maks 400px */
+            aspect-ratio: 1/1;       /* Menjaga bentuk kotak sempurna sebelum dibulatkan */
+            border-radius: 50%;      /* Membuat bentuk BULAT sempurna */
+            
+            /* Pinggiran Minimalis Warna Emas Tua */
+            border: 2px solid var(--antique-gold); 
+            
+            overflow: hidden;        /* Memotong gambar agar tidak keluar bingkai bulat */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--dark-walnut); /* Background bingkai jika gambar loading */
+
+            /* EFEK SHADOW (BAYANGAN) PADA BINGKAI */
+            box-shadow: -15px 15px 30px rgba(0, 0, 0, 0.6); 
+            
+            cursor: pointer;
+            /* Transisi animasi reset untuk JavaScript */
+            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s ease;
+        }
+
+        /* --- GAMBAR PROFIL DI DALAM BINGKAI --- */
+        #profile-pic {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Menyesuaikan gambar agar mengisi penuh bingkai bulat tanpa distorsi */
+        }
+
+        /* --- Animasi Masuk --- */
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeLeft {
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* --- Responsif (Mobile) --- */
+        @media (max-width: 900px) {
+            body { background: var(--deep-coffee); }
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 2rem;
+                justify-content: center;
+            }
+            .hero-text { max-width: 100%; margin-top: 2rem; }
+            h1 { font-size: 3rem; }
+            .navbar {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 1rem;
+                padding: 1.5rem;
+            }
+            .nav-links a { margin: 0 1rem; }
+            .hero-image { width: 80%; }
+            #profile-frame { width: min(100%, 300px); }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="#about">About Me</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#certifications">Certifications</a>
+            <a href="#blog">Blog</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-text">
+            <h1>Hi, i'm <span class="highlight">Luthfi</span></h1>
+            <p class="subtitle">
+                Undergraduate Geodesy and Geomatics Engineering Student<br>
+                Institut Teknologi Bandung
+            </p>
+            <p class="enthusiast">GIS & Project Management Enthusiast</p>
+        </div>
+        
+        <div class="hero-image">
+            <div id="profile-frame">
+                <img src="gambardiri.png" alt="Luthfi" id="profile-pic">
+            </div>
+        </div>
+    </header>
+
+    <script>
+        const profileFrame = document.getElementById('profile-frame');
+
+        // Efek tilt 3D saat bingkai di-hover
+        profileFrame.addEventListener('mousemove', (e) => {
+            const { offsetWidth: width, offsetHeight: height } = profileFrame;
+            const { offsetX: x, offsetY: y } = e;
+
+            // Kalkulasi rotasi (tilt)
+            const moveX = (x / width) * 30 - 15; 
+            const moveY = (y / height) * -30 + 15;
+
+            // Terapkan efek 3D ke seluruh bingkai
+            profileFrame.style.transform = `perspective(1000px) rotateX(${moveY}deg) rotateY(${moveX}deg) scale3d(1.03, 1.03, 1.03)`;
+            profileFrame.style.transition = 'transform 0.1s ease-out'; 
+            
+            // Pertajam shadow agar terlihat lebih pop-up saat dihover
+            profileFrame.style.boxShadow = '-25px 25px 40px rgba(0, 0, 0, 0.7)';
+        });
+
+        // Kembalikan ke posisi awal saat mouse keluar
+        profileFrame.addEventListener('mouseleave', () => {
+            profileFrame.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            profileFrame.style.transition = 'transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)';
+            
+            // Kembalikan shadow ke normal
+            profileFrame.style.boxShadow = '-15px 15px 30px rgba(0, 0, 0, 0.6)';
+        });
+    </script>
+</body>
+</html>
